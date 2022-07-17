@@ -1,5 +1,5 @@
 from telegram.ext import MessageFilter
-from utils.text import j
+from utils.text import j, button
 
 
 class FilterButton(MessageFilter):
@@ -7,12 +7,9 @@ class FilterButton(MessageFilter):
         self.key = key
 
     def filter(self, message):
-        return 'python-telegram-bot is awesome' in message.text
+        return button(self.key) in message.text
 
 
-def buttons(key: str):
+def multibuttons(key: str):
     options = j["buttons"][key]
-    res = []
-    for i in options:
-        res.append(options[i])
-    return '|'.join(j for j in res)
+    return '|'.join(i for i in options)
