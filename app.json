@@ -1,0 +1,36 @@
+{
+	"meta": {
+		"version": "1.0.0",
+		"description": "This bot provides online support as a 'bridge' between a student and a teacher",
+		"url": "https://github.com/nuriddinislamov/online-support-bot",
+		"author": "Nuriddin Islamov",
+		"date_of_release": "July 2022"
+	},
+	"developer_id": 5340177802,
+
+	"app_data": {
+		"texts": {
+			"welcome": "Assalomu alaykum!\n\n'Online Support' botidan foydalanganingiz uchun rahmat!",
+			"help": "Komandalar menyusi:\n",
+			"begin_registration": "Botdan to'liq foydalanishingiz uchun siz haqingizda azgina bilib olsam... Keling ismingizdan boshlaymiz",
+			"request_name": "To'liq ismingizni 'Ism Familiya' formatda kiriting\nMasalan: <i>Abdulloh Ahmedov</i>",
+			"incomplete_registration": "Hmm... Men hali siz haqingizda ko'p bilmas ekanman. Keling boshidan tanishib olamiz",
+			"welcome_back": "Sizni qayta men bilan virtual suhbatda ko'rganimdan juda xursandman. Bugun sizga qanday yordam bera olaman?",
+			"main_menu": "Asosiy sahifa"
+		},
+		"buttons": {
+			"book_session": "O'qituvchi bilan bog'lanish",
+			"my_info": "ℹ️ Mening ma'lumotlarim",
+			"settings": "⚙️ Sozlamalar",
+			"confirm": "Tasdiqlash!",
+			"levels": [
+				"Beginner",
+				"Elementary",
+				"Pre-Intermediate",
+				"Intermediate",
+				"Pre-IELTS",
+				"IELTS"
+			]
+		}
+	}
+}
