@@ -1,6 +1,22 @@
-from sqlite3 import connect
+from sqlite3 import connect, version
+from db.constants import DB_NAME
+import logging
 
-database_path = "databases/database.sqlite"
 
-conn = connect(database_path, check_same_thread=False)
-cursor = conn.cursor()
+# conn = connect(DB_NAME, check_same_thread=False)
+# cursor = conn.cursor()
+
+
+def db_query(query: str):
+    """Performs database commands."""
+    db = connect(DB_NAME, check_same_thread=False)
+    logging.info("Connected to SQLite database %s with version %s",
+                 DB_NAME, version)
+    with db:
+        cursor = db.cursor()
+        cursor.execute(query)
+        result = cursor.fetchall()
+    if db:
+        db.commit()
+        cursor.close()
+    return result
