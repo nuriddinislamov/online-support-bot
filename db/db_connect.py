@@ -6,8 +6,8 @@ import logging
 def db_query(query: str):
     """Performs database commands."""
     db = connect(DB_NAME, check_same_thread=False)
-    logging.info("Connected to SQLite database %s with version %s",
-                 DB_NAME, version)
+    logging.debug("Connected to SQLite database %s with version %s",
+                  DB_NAME, version)
     with db:
         cursor = db.cursor()
         cursor.execute(query)
@@ -15,5 +15,5 @@ def db_query(query: str):
     if db:
         db.commit()
         cursor.close()
-        logging.info("Database connection closed.")
+        logging.debug("Database connection closed.")
     return result
