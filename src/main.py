@@ -7,6 +7,7 @@ from telegram.ext import (Updater,
 from src.components import start, register, main_menu
 from utils.db import check_db_exists
 from utils.text import button
+from utils.filter import multibuttons
 
 
 dotenv.load_dotenv()
@@ -14,12 +15,11 @@ dotenv.load_dotenv()
 # Set Debug to False when in production!
 DEBUG = os.environ.get('DEBUG', True)
 
-
 logging.basicConfig(
     filename='logs.log' if not DEBUG else None,
     filemode='a',
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.DEBUG if DEBUG else logging.INFO
+    level=logging.INFO if not DEBUG else logging.DEBUG
 )
 
 logger = logging.getLogger(__name__)
@@ -38,14 +38,15 @@ def main():
         ],
         states={
             "REQUEST_NAME": [
-                MessageHandler(Filters.text, register.save_data)
+                MessageHandler(Filters.text, register.get_name)
             ],
             "REQUEST_PHONE": [
                 MessageHandler(Filters.text | Filters.contact,
-                               register.save_data)
+                               register.get_phone)
             ],
             "REQUEST_LEVEL": [
-                MessageHandler(Filters.text, register.save_data)
+                MessageHandler(Filters.regex(
+                    multibuttons('levels')), register.get_level)
             ],
             "MAIN_MENU": [
                 MessageHandler(Filters.regex(
