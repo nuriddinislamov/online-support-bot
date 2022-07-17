@@ -3,10 +3,6 @@ from db.constants import DB_NAME
 import logging
 
 
-# conn = connect(DB_NAME, check_same_thread=False)
-# cursor = conn.cursor()
-
-
 def db_query(query: str):
     """Performs database commands."""
     db = connect(DB_NAME, check_same_thread=False)
@@ -19,4 +15,5 @@ def db_query(query: str):
     if db:
         db.commit()
         cursor.close()
+        logging.info("Database connection closed.")
     return result
