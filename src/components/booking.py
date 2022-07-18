@@ -1,6 +1,7 @@
 from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram.ext import CallbackContext
 from src.components import main_menu
+from src.constants import GROUP_ID
 from utils.text import button, text
 from utils.build_markup import build_markup
 from utils.datetime_slots import generate_date_slots, generate_time_slots
@@ -109,8 +110,17 @@ def review(update: Update, context: CallbackContext):
     first_name = db_user_data[1]
     last_name = db_user_data[2]
     full_name = first_name + ' ' + last_name
+
+    payload = {
+        "user_id": user_id,
+        "full_name": full_name,
+        "phone_number": db_user_data[3],
+        "level": db_user_data[4]
+    }
+
+    context.user_data.update(payload)
+
     data = context.user_data
-    print(data)
 
     update.effective_message.reply_text(
         text('review_booking').format(
@@ -126,14 +136,33 @@ def review(update: Update, context: CallbackContext):
             ], resize_keyboard=True
         ),
         parse_mode='HTML')
+    return "BOOKING_REVIEW"
 
 
 def submit(update: Update, context: CallbackContext):
-    update.effective_message.reply_text('Submit')
+    user_id = update.effective_chat.id
+    update.effective_message.reply_text(text('submitted'))
+    user_data = context.user_data
+
+    msg = context.bot.send_message(GROUP_ID, text('group_message_template')
+                                   .format(
+        user_data['session_id'],
+        user_data['full_name'],
+        user_data['phone_number'],
+        user_data['level'],
+        user_data['date'] + ' ' + user_data['time'],
+        user_data['comments']
+    ),
+        parse_mode='HTML')
+
+    context.bot_data.update({
+        msg.message_id: user_id
+    })
+
     return main_menu.display(update, context)
 
 
 def cancel(update: Update, context: CallbackContext):
-    update.effective_message.reply_text('Cancel')
+    update.effective_message.reply_text(text('canceled'))
 
     return main_menu.display(update, context)
