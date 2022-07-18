@@ -4,10 +4,11 @@ import logging
 from telegram.ext import (Updater,
                           CommandHandler,
                           ConversationHandler, MessageHandler, Filters)
-from src.components import start, register, main_menu
+from src.components import start, register, main_menu, settings, group, booking
+from src import constants
 from utils.db import check_db_exists
 from utils.text import button
-from utils.filter import multibuttons
+from utils.filter import multibuttons, ReplyToMessageFilter, FilterDateTimeButtons
 
 
 dotenv.load_dotenv()
@@ -50,12 +51,44 @@ def main():
             ],
             "MAIN_MENU": [
                 MessageHandler(Filters.regex(
-                    button('my_info')), main_menu.my_info),
+                    button('book_session')), booking.get_date),
                 MessageHandler(Filters.regex(
-                    button('settings')), main_menu.settings),
+                    button('settings')), settings.display)
+            ],
+            "BOOKING_DATE": [
+                MessageHandler(FilterDateTimeButtons(
+                    date=True), booking.save_date),
                 MessageHandler(Filters.regex(
-                    button('book_session')), main_menu.book_session)
-            ]
+                    button('back')), main_menu.display)
+            ],
+            "BOOKING_TIME": [
+                MessageHandler(FilterDateTimeButtons(
+                    time=True), booking.save_time),
+                MessageHandler(Filters.regex(
+                    button('back')), booking.get_date)
+            ],
+            "BOOKING_GET_COMMENTS": [
+                MessageHandler(Filters.text, booking.save_comments),
+                MessageHandler(Filters.regex(
+                    button('back')), booking.get_time_slot)
+            ],
+            "BOOKING_REVIEW": [
+                MessageHandler(Filters.regex(
+                    button('submit')), booking.submit),
+                MessageHandler(Filters.regex(button('cancel')), booking.cancel)
+            ],
+            "SETTINGS": [
+                MessageHandler(Filters.regex(
+                    button('my_info')), settings.my_info),
+                MessageHandler(Filters.regex(
+                    button('change_info')), settings.change_info),
+                MessageHandler(Filters.regex(
+                    button('back')), main_menu.display)
+            ],
+            "MY_INFO": [
+                MessageHandler(Filters.regex(
+                    button('back')), settings.display)
+            ],
         },
         fallbacks=[
 
@@ -63,6 +96,8 @@ def main():
     )
 
     dispatcher.add_handler(main_conversation)
+    dispatcher.add_handler(MessageHandler(
+        ReplyToMessageFilter(Filters.user(constants.BOT_ID)), group.reply_to_user))
 
     updater.start_polling()
     updater.idle()
