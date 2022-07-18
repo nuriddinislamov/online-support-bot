@@ -13,7 +13,7 @@
 		"texts": {
 			"welcome": "Assalomu alaykum!\n\n'Online Support' botidan foydalanganingiz uchun rahmat!",
 			"help": "Komandalar menyusi:\n\n/start - Botni boshlash/qayta boshlash\n/book - Akademik yordam qabuliga yozilish\n/contact - Bizning manzillar va kontaktlar\n\n<b>🤓 iKnow Support Bot is here to help!</b>",
-			"begin_registration": "Botdan to'liq foydalanishingiz uchun siz haqingizda azgina bilib olsam... Keling ismingizdan boshlaymiz",
+			"begin_registration": "Botdan to'liq foydalanishingiz uchun siz haqingizda ozgina bilib olsam... Keling ismingizdan boshlaymiz",
 			"request_name": "To'liq ismingizni 'Ism Familiya' formatda kiriting\nMasalan: <i>Abdulloh Ahmedov</i>",
 			"name_error": "Ism kiritishda xatolik bor.",
 			"request_phone": "Telefon raqamingizni quyida berilgan tugma orqali <b>yuboring</b> <i>yoki</i> o'zingiz <i>+998991234567</i> formatida <b>kiriting</b>",
@@ -31,7 +31,7 @@
 			"get_date": "Sizga qulay bo'lgan kunni tanlang (keyingi 1 xafta uchun)",
 			"get_time": "Sizga qulay bo'lgan vaqtni tanlang",
 			"got_it": "Qabul qildim!",
-			"enter_comments": "O'z murojaatingizni kiriting (comments) ✍️",
+			"enter_comments": "O'z murojaatingizni kiriting (Qaysi mavzu tushuntirilishini xohlaysiz) ✍️",
 			"review_booking": "Quyidagi ma'lumotlarni tekshirib chiqib, 'Tasdiqlash' tugmasini bosing:\n\nSana: <b>{}</b>\nVaqt: <b>{}</b>\nIzohlar: <b>{}</b>\n\nMen, <i>{}</i>, tanlagan vaqtlarim to'g'riligiga kafolat beraman",
 			"submitted": "Rahmat, javoblaringizni qabul qildik!",
 			"canceled": "Barcha ma'lumotlar bekor qilindi!",

@@ -76,7 +76,8 @@ def main():
                     button('back')), booking.get_date)
             ],
             "BOOKING_GET_COMMENTS": [
-                MessageHandler(Filters.text, booking.save_comments),
+                MessageHandler(Filters.text & (
+                    ~Filters.command), booking.save_comments),
                 MessageHandler(Filters.regex(
                     button('back')), booking.get_time_slot)
             ],
