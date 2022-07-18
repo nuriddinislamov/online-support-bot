@@ -1,10 +1,11 @@
 from telegram import ChatAction, Update
 from telegram.ext import CallbackContext
-from utils.text import text
-from db.queries import create_table_if_not_exists, add_new_user, get_user
 from .register import register_user
+from db.queries import create_table_if_not_exists, add_new_user, get_user
 from src.constants import STATUS
 from src.components import main_menu
+from utils.text import text
+from utils.filter import is_group
 import logging
 import time
 
@@ -21,10 +22,12 @@ import time
 
 def start(update: Update, context: CallbackContext):
     user_id = update.effective_chat.id
+    if is_group(user_id):
+        return
+
     create_table_if_not_exists('users')
 
     # Fetch data from Database
-
     if len(get_user(user_id)) == 0:
         add_new_user(user_id)
         update.effective_message.reply_text(text('welcome'),
