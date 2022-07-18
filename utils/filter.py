@@ -57,7 +57,7 @@ class FilterDateTimeButtons(MessageFilter):
 
 def multibuttons(key: str):
     options = j["buttons"][key]
-    return '|'.join(i for i in options)
+    return '|'.join(f"^{i}$" for i in options)
 
 
 def is_group(chat_id: int):
