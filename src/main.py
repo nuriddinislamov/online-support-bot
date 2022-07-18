@@ -4,8 +4,16 @@ import logging
 from telegram.ext import (Updater,
                           CommandHandler,
                           ConversationHandler, MessageHandler, Filters)
-from src.components import start, register, main_menu, settings, group, booking
-from src import constants
+from src.components import (
+    start,
+    register,
+    main_menu,
+    settings,
+    group,
+    booking,
+    errors,
+    commands)
+from src.constants import BOT_ID
 from utils.db import check_db_exists
 from utils.text import button
 from utils.filter import multibuttons, ReplyToMessageFilter, FilterDateTimeButtons
@@ -91,13 +99,15 @@ def main():
             ],
         },
         fallbacks=[
-
+            CommandHandler('start', start.start),
+            CommandHandler('help', commands.help)
         ]
     )
 
     dispatcher.add_handler(main_conversation)
     dispatcher.add_handler(MessageHandler(
-        ReplyToMessageFilter(Filters.user(constants.BOT_ID)), group.reply_to_user))
+        ReplyToMessageFilter(Filters.user(BOT_ID)), group.reply_to_user))
+    dispatcher.add_error_handler(errors.error_handler)
 
     updater.start_polling()
     updater.idle()
