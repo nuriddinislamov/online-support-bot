@@ -90,8 +90,6 @@ def main():
                 MessageHandler(Filters.regex(
                     button('my_info')), settings.my_info),
                 MessageHandler(Filters.regex(
-                    button('change_info')), settings.change_info),
-                MessageHandler(Filters.regex(
                     button('back')), main_menu.display)
             ],
             "MY_INFO": [
