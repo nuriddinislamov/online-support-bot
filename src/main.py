@@ -97,10 +97,15 @@ def main():
                 MessageHandler(Filters.regex(
                     button('back')), settings.display)
             ],
+            "HELP_INFO": [
+                MessageHandler(Filters.regex(
+                    button('thanks')), main_menu.display)
+            ]
         },
         fallbacks=[
             CommandHandler('start', start.start),
-            CommandHandler('help', commands.help)
+            CommandHandler('help', commands.help),
+            CommandHandler('contact', commands.contact)
         ]
     )
 
