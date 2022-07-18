@@ -12,7 +12,7 @@
 	"app_data": {
 		"texts": {
 			"welcome": "Assalomu alaykum!\n\n'Online Support' botidan foydalanganingiz uchun rahmat!",
-			"help": "Komandalar menyusi:\n\n/start - Botni boshlash/qayta boshlash\n/book - Akademik yordam qabuliga yozilish\n/contact - Bizning manzillar va kontaktlar\n\n<b>🤓 iKnow Support Bot is here to help!/b>",
+			"help": "Komandalar menyusi:\n\n/start - Botni boshlash/qayta boshlash\n/book - Akademik yordam qabuliga yozilish\n/contact - Bizning manzillar va kontaktlar\n\n<b>🤓 iKnow Support Bot is here to help!</b>",
 			"begin_registration": "Botdan to'liq foydalanishingiz uchun siz haqingizda azgina bilib olsam... Keling ismingizdan boshlaymiz",
 			"request_name": "To'liq ismingizni 'Ism Familiya' formatda kiriting\nMasalan: <i>Abdulloh Ahmedov</i>",
 			"name_error": "Ism kiritishda xatolik bor.",

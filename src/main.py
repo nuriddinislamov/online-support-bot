@@ -105,7 +105,8 @@ def main():
         fallbacks=[
             CommandHandler('start', start.start),
             CommandHandler('help', commands.help),
-            CommandHandler('contact', commands.contact)
+            CommandHandler('contact', commands.contact),
+            CommandHandler('book', booking.get_date)
         ]
     )
 
