@@ -12,7 +12,7 @@
 	"app_data": {
 		"texts": {
 			"welcome": "Assalomu alaykum!\n\n'Online Support' botidan foydalanganingiz uchun rahmat!",
-			"help": "Komandalar menyusi:\n",
+			"help": "Komandalar menyusi:\n\n/start - Botni boshlash/qayta boshlash\n/book - Akademik yordam qabuliga yozilish\n/contact - Bizning manzillar va kontaktlar\n\n<b>🤓 iKnow Support Bot is here to help!/b>",
 			"begin_registration": "Botdan to'liq foydalanishingiz uchun siz haqingizda azgina bilib olsam... Keling ismingizdan boshlaymiz",
 			"request_name": "To'liq ismingizni 'Ism Familiya' formatda kiriting\nMasalan: <i>Abdulloh Ahmedov</i>",
 			"name_error": "Ism kiritishda xatolik bor.",
@@ -36,7 +36,8 @@
 			"submitted": "Rahmat, javoblaringizni qabul qildik!",
 			"canceled": "Barcha ma'lumotlar bekor qilindi!",
 			"group_message_template": "✍️ New user request:\n<b>Update_ID {}</b>\n\n🖋 Name: <b>{}</b>\n📞 Phone number: <b>{}</b>\n🇬🇧 Level: <b>{}</b>\n🕘 Date & Time: <b>{}</b>\n\nComments: <b>{}</b>\n\n<i>You can directly 'reply' to this message, so that sender will get your response.</i>",
-			"group_response": "Administratorlardan sizga javob keldi:\n\n<i>{}</i>"
+			"group_response": "Administratorlardan sizga javob keldi:\n\n<i>{}</i>",
+			"contact_details": "Telefonlar:\n93-121-04-04\n93-212-04-04\n\n✉️ @iknow_admin\n\n📍 Gorgaz (Gorizont), A.Navoiy 30\n📍 Telegraf, Nasledov 18"
 		},
 		"buttons": {
 			"book_session": "✏️ O'qituvchiga ariza qoldirish",
@@ -55,7 +56,8 @@
 			"back": "⏪ Orqaga",
 			"change_info": "✍️ Ma'lumotlarimni o'zgartirish",
 			"submit": "✅ Tasdiqlayman!",
-			"cancel": "❌ Bekor qilmoqchiman"
+			"cancel": "❌ Bekor qilmoqchiman",
+			"thanks": "Tushunarli, rahmat!"
 		}
 	}
 }
