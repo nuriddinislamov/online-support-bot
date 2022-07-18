@@ -26,13 +26,17 @@
 			"main_menu": "Asosiy sahifa",
 			"settings": "Sozlamalar",
 			"my_info": "📝 Mening shaxsiy ma'lumotlarim:\n\nIsmim: <b>{}</b>\nTelefon raqam: <b>{}</b>\nIngiliz tili darajasi: <b>{}</b>",
-			"try_earlier_messages": "Yangiroq xabarlarga javob berishga xarakat qiling",
+			"try_later_messages": "Yangiroq xabarlarga javob berishga xarakat qiling",
 			"message_sent": "Sizning javobingiz so'rovchiga yetkazildi!",
 			"get_date": "Sizga qulay bo'lgan kunni tanlang (keyingi 1 xafta uchun)",
 			"get_time": "Sizga qulay bo'lgan vaqtni tanlang",
 			"got_it": "Qabul qildim!",
 			"enter_comments": "O'z murojaatingizni kiriting (comments) ✍️",
-			"review_booking": "Quyidagi ma'lumotlarni tekshirib chiqib, 'Tasdiqlash' tugmasini bosing:\n\nSana: <b>{}</b>\nVaqt: <b>{}</b>\nIzohlar: <b>{}</b>\n\nMen, <i>{}</i>, tanlagan vaqtlarim to'g'riligiga kafolat beraman"
+			"review_booking": "Quyidagi ma'lumotlarni tekshirib chiqib, 'Tasdiqlash' tugmasini bosing:\n\nSana: <b>{}</b>\nVaqt: <b>{}</b>\nIzohlar: <b>{}</b>\n\nMen, <i>{}</i>, tanlagan vaqtlarim to'g'riligiga kafolat beraman",
+			"submitted": "Rahmat, javoblaringizni qabul qildik!",
+			"canceled": "Barcha ma'lumotlar bekor qilindi!",
+			"group_message_template": "✍️ New user request:\n<b>Update_ID {}</b>\n\n🖋 Name: <b>{}</b>\n📞 Phone number: <b>{}</b>\n🇬🇧 Level: <b>{}</b>\n🕘 Date & Time: <b>{}</b>\n\nComments: <b>{}</b>\n\n<i>You can directly 'reply' to this message, so that sender will get your response.</i>",
+			"group_response": "Administratorlardan sizga javob keldi:\n\n<i>{}</i>"
 		},
 		"buttons": {
 			"book_session": "✏️ O'qituvchiga ariza qoldirish",
