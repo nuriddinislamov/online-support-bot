@@ -28,7 +28,7 @@ dotenv.load_dotenv()
 DEBUG = os.environ.get('DEBUG', True)
 
 logging.basicConfig(
-    filename='logs.log' if not DEBUG else None,
+    filename='logs.log',
     filemode='a',
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO if not DEBUG else logging.DEBUG
