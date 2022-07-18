@@ -3,7 +3,10 @@ import dotenv
 import logging
 from telegram.ext import (Updater,
                           CommandHandler,
-                          ConversationHandler, MessageHandler, Filters)
+                          ConversationHandler,
+                          MessageHandler,
+                          Filters,
+                          PicklePersistence)
 from src.components import (
     start,
     register,
@@ -38,7 +41,8 @@ def main():
     if not check_db_exists():
         raise Exception('Database not found!')
 
-    updater = Updater(os.environ['BOT_TOKEN'])
+    persistence = PicklePersistence(filename='DO_NOT_DELETE')
+    updater = Updater(os.environ['BOT_TOKEN'], persistence=persistence)
     dispatcher = updater.dispatcher
 
     main_conversation = ConversationHandler(
@@ -106,7 +110,10 @@ def main():
             CommandHandler('help', commands.help),
             CommandHandler('contact', commands.contact),
             CommandHandler('book', booking.get_date)
-        ]
+        ],
+        per_chat=False,
+        name="main_conversation",
+        persistent=True
     )
 
     dispatcher.add_handler(main_conversation)
