@@ -65,7 +65,8 @@ def main():
                 MessageHandler(Filters.regex(
                     button('book_session')), booking.get_date),
                 MessageHandler(Filters.regex(
-                    button('settings')), settings.display)
+                    button('settings')), settings.display),
+                CommandHandler('download', main_menu.download_users)
             ],
             "BOOKING_DATE": [
                 MessageHandler(FilterDateTimeButtons(
