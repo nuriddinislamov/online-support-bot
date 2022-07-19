@@ -112,7 +112,6 @@ def main():
             CommandHandler('contact', commands.contact),
             CommandHandler('book', booking.get_date)
         ],
-        per_chat=False,
         name="main_conversation",
         persistent=True
     )
