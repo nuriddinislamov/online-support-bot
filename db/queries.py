@@ -29,7 +29,7 @@ def set_user(id: int, data: dict):
     # }
     pairs = []
     for i in data:
-        pairs.append(f"{i} = '{data[i]}'")
+        pairs.append(f'{i} = "{data[i]}"')
 
     db_query(
-        f"UPDATE users SET {', '.join(pairs)} WHERE id = {id}")
+        f'UPDATE users SET {", ".join(pairs)} WHERE id = {id}')
