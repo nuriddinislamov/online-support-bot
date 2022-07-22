@@ -72,7 +72,7 @@ def get_phone(update: Update, context: CallbackContext):
     message = update.effective_message
 
     if message.contact:
-        phone_number = message.contact.phone_number
+        phone_number = "+" + str(message.contact.phone_number)
     else:
         if update.message.text[:1] != '+':
             context.bot.send_message(user_id,
