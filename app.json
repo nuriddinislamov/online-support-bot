@@ -35,7 +35,7 @@
 			"review_booking": "Quyidagi ma'lumotlarni tekshirib chiqib, 'Tasdiqlash' tugmasini bosing:\n\nSana: <b>{}</b>\nVaqt: <b>{}</b>\nIzohlar: <b>{}</b>\n\nMen, <i>{}</i>, tanlagan vaqtlarim to'g'riligiga kafolat beraman",
 			"submitted": "Rahmat, javoblaringizni qabul qildik!",
 			"canceled": "Barcha ma'lumotlar bekor qilindi!",
-			"group_message_template": "✍️ New user request:\n<b>Update_ID {}</b>\n\n🖋 Name: <b>{}</b>\n📞 Phone number: <b>{}</b>\n🇬🇧 Level: <b>{}</b>\n🕘 Date & Time: <b>{}</b>\n\nComments: <b>{}</b>\n\n<i>You can directly 'reply' to this message, so that sender will get your response.</i>",
+			"group_message_template": "✍️ New user request:\n<b>ID #{}</b>\n\n🖋 Name: <b>{}</b>\n📞 Phone number: <b>{}</b>\n🇬🇧 Level: <b>{}</b>\n🕘 Date & Time: <b>{}</b>\n\nComments: <b>{}</b>\n\n<i>You can directly 'reply' to this message, so that sender will get your response.</i>",
 			"group_response": "Administratorlardan sizga javob keldi:\n\n<i>{}</i>",
 			"contact_details": "Telefonlar:\n93-121-04-04\n93-212-04-04\n\n✉️ @iknow_admin\n\n📍 Gorgaz (Gorizont), A.Navoiy 30\n📍 Telegraf, Nasledov 18"
 		},
