@@ -169,7 +169,10 @@ def submit(update: Update, context: CallbackContext):
 
     # Tashkent timezone is UTC +5;
     without_timezone = datetime.datetime.strptime(
-        user_data['date'], "%d-%m-%Y") + datetime.timedelta(seconds=21*60*60 + random.randint(0, 3600))
+        user_data['date'], "%d-%m-%Y") + datetime.timedelta(
+            # random time between 21.00 - 22.00 on a given date
+            seconds=21*60*60 + random.randint(0, 3600)
+    )
 
     timezone = pytz.timezone('Asia/Tashkent')
 
