@@ -37,8 +37,14 @@
 			"submitted": "Rahmat, javoblaringizni qabul qildik!",
 			"canceled": "Barcha ma'lumotlar bekor qilindi!",
 			"group_message_template": "✍️ New user request:\n<b>ID #{}</b>\n\n🖋 Name: <b>{}</b>\n📞 Phone number: <b>{}</b>\n🇬🇧 Level: <b>{}</b>\n🕘 Date & Time: <b>{}</b>\n👨‍🏫 Teacher: <b>{}</b>\n\nComments: <b>{}</b>\n\n<i>You can directly 'reply' to this message, so that sender will get your response.</i>",
-			"group_response": "Administratorlardan sizga javob keldi:\n\n<i>{}</i>",
-			"contact_details": "Telefonlar:\n93-121-04-04\n93-212-04-04\n\n✉️ @iknow_admin\n\n📍 Gorgaz (Gorizont), A.Navoiy 30\n📍 Telegraf, Nasledov 18"
+			"group_response": "✍️ Administratorlardan sizga xabar keldi:\n\n<i>{}</i>",
+			"contact_details": "Telefonlar:\n93-121-04-04\n93-212-04-04\n\n✉️ @iknow_admin\n\n📍 Gorgaz (Gorizont), A.Navoiy 30\n📍 Telegraf, Nasledov 18",
+			"feedback_template": "😇 Bugungi 'Support' darslarimizdan biriga ro'yxatdan o'tganingiz uchun rahmat!\n\nKelajakda biz ko'rsatayotgan ta'lim sifatini oshirish maqsadida o'quvchilarimizdan darsga bo'lgan o'z ovozlarini berishni iltimos qilamiz.",
+			"ask_feedback": "⭐️ Bugungi darsga necha yulduz berasiz?",
+			"feedback_comments": "Izohlaringizni yozib qoldiring - biz albatta hammasini inobatga olamiz",
+			"stars_submitted": "Rahmat! Siz {} berdingiz.",
+			"feedback_submitted": "✅ Javoblaringiz ma'muriyatga yetkazildi. Vaqtingiz uchun rahmat!",
+			"feedback_to_group": "🍎 New feedback!\n<b>ID #{}</b>\n\nUID: <b>{}</b>\nName: <b>{}</b>\nStars: <b>{}</b>\nComments: <b>{}</b>\n\n<i>You can reply to this message. Sender will be notified.</i>"
 		},
 		"buttons": {
 			"book_session": "✏️ O'qituvchiga ariza qoldirish",
@@ -58,7 +64,10 @@
 			"change_info": "✍️ Ma'lumotlarimni o'zgartirish",
 			"submit": "✅ Tasdiqlayman!",
 			"cancel": "❌ Bekor qilmoqchiman",
-			"thanks": "Tushunarli, rahmat!"
+			"thanks": "Tushunarli, rahmat!",
+			"no_comments": "Izohlarim yo'q 🤓",
+			"approve": "Approve ✅",
+			"deny": "Deny ⛔️"
 		}
 	}
 }

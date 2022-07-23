@@ -5,8 +5,12 @@ from src.constants import GROUP_ID
 from utils.text import button, text
 from utils.build_markup import build_markup
 from utils.datetime_slots import generate_date_slots, generate_time_slots
+from utils.jobqueue import run_job
 from db.queries import get_user
 import logging
+import datetime
+import random
+import pytz
 
 
 def get_date(update: Update, context: CallbackContext):
@@ -162,6 +166,17 @@ def submit(update: Update, context: CallbackContext):
     context.bot_data.update({
         msg.message_id: user_id
     })
+
+    # Tashkent timezone is UTC +5;
+    without_timezone = datetime.datetime.strptime(
+        user_data['date'], "%d-%m-%Y") + datetime.timedelta(seconds=21*60*60 + random.randint(0, 3600))
+
+    timezone = pytz.timezone('Asia/Tashkent')
+
+    final_time = timezone.localize(without_timezone)
+    run_job(
+        update, context,
+        run_time=final_time)
 
     return main_menu.display(update, context)
 

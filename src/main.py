@@ -4,6 +4,7 @@ import logging
 from telegram.ext import (Updater,
                           CommandHandler,
                           ConversationHandler,
+                          CallbackQueryHandler,
                           MessageHandler,
                           Filters,
                           PicklePersistence)
@@ -15,7 +16,8 @@ from src.components import (
     group,
     booking,
     errors,
-    commands)
+    commands,
+    feedback)
 from src.constants import BOT_ID
 from utils.db import check_db_exists
 from utils.text import button
@@ -28,7 +30,7 @@ dotenv.load_dotenv()
 DEBUG = os.environ.get('DEBUG', True)
 
 logging.basicConfig(
-    filename='logs.log',
+    filename='logs.log' if not DEBUG else None,
     filemode='a',
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO if not DEBUG else logging.DEBUG
@@ -108,9 +110,15 @@ def main():
             "HELP_INFO": [
                 MessageHandler(Filters.regex(
                     button('thanks')), main_menu.display)
-            ]
+            ],
+            "FEEDBACK_COMMENTS": [
+                MessageHandler(Filters.text & (
+                    ~Filters.command), feedback.submit_feedback)
+            ],
         },
         fallbacks=[
+            CallbackQueryHandler(feedback.handle_feedback,
+                                 pattern='^1|2|3|4|5$'),
             CommandHandler('start', start.start),
             CommandHandler('help', commands.help),
             CommandHandler('contact', commands.contact),
