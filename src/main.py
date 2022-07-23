@@ -17,7 +17,8 @@ from src.components import (
     booking,
     errors,
     commands,
-    feedback)
+    feedback,
+    broadcast)
 from src.constants import BOT_ID
 from utils.db import check_db_exists
 from utils.text import button
@@ -72,7 +73,15 @@ def main():
                     button('book_session')), booking.get_date),
                 MessageHandler(Filters.regex(
                     button('settings')), settings.display),
-                CommandHandler('download', main_menu.download_users)
+                CommandHandler('download', main_menu.download_users),
+                CommandHandler('broadcast', broadcast.request)
+            ],
+            # Admin restricted state
+            "BROADCASTING": [
+                MessageHandler(Filters.regex(
+                    button('cancel_broadcast')), broadcast.cancel),
+                MessageHandler(Filters.text | Filters.photo |
+                               Filters.video, broadcast.send_all)
             ],
             "BOOKING_DATE": [
                 MessageHandler(FilterDateTimeButtons(

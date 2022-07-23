@@ -28,3 +28,7 @@ def set_user(id: int, data: dict):
 
     db_query(
         f'UPDATE users SET {", ".join(pairs)} WHERE id = {id}')
+
+
+def get_all_users():
+    return db_query(f'SELECT id FROM users')
