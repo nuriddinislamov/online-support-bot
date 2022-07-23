@@ -1,4 +1,4 @@
-from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
+from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext
 from src.components import main_menu
 from src.constants import GROUP_ID
@@ -145,7 +145,6 @@ def review(update: Update, context: CallbackContext):
 
 def submit(update: Update, context: CallbackContext):
     user_id = update.effective_chat.id
-    update.effective_message.reply_text(text('submitted'))
     user_data = context.user_data
 
     teacher_raw = get_user(user_id, 'teacher')[0][0]
@@ -154,6 +153,7 @@ def submit(update: Update, context: CallbackContext):
     msg = context.bot.send_message(GROUP_ID, text('group_message_template')
                                    .format(
         user_data['session_id'],
+        user_id,
         user_data['full_name'],
         user_data['phone_number'],
         user_data['level'],
@@ -161,6 +161,10 @@ def submit(update: Update, context: CallbackContext):
         teacher,
         user_data['comments']
     ),
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton(text=button('approve'), callback_data='approve'),
+             InlineKeyboardButton(text=button('deny'), callback_data='deny')]
+        ]),
         parse_mode='HTML')
 
     context.bot_data.update({
@@ -181,6 +185,8 @@ def submit(update: Update, context: CallbackContext):
         update, context,
         run_time=final_time)
 
+    update.effective_message.reply_text(text('submitted'))
+
     return main_menu.display(update, context)
 
 
@@ -188,3 +194,25 @@ def cancel(update: Update, context: CallbackContext):
     update.effective_message.reply_text(text('canceled'))
 
     return main_menu.display(update, context)
+
+
+def handle_booking_approval(update: Update, context: CallbackContext):
+    query = update.callback_query
+    message = query.message
+
+    if query.data == 'approve':
+        status = '✅ Approved'
+
+    if query.data == 'deny':
+        status = '⛔️ Denied'
+
+    message.edit_text(f"<b>{status}</b>\n" + message.text,
+                      parse_mode='HTML',
+                      entities=message.entities)
+    # User ID text index
+    uid_txt_idx = message.text.find("UID:")
+    # Get the User ID from the text
+    uid = message.text[uid_txt_idx + 5:].split('\n')[0]
+
+    context.bot.send_message(uid, text('status_update').format(status),
+                             parse_mode='HTML')
