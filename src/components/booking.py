@@ -144,6 +144,8 @@ def submit(update: Update, context: CallbackContext):
     update.effective_message.reply_text(text('submitted'))
     user_data = context.user_data
 
+    teacher = get_user(user_id, 'teacher')[0][0] if not None else "null"
+
     msg = context.bot.send_message(GROUP_ID, text('group_message_template')
                                    .format(
         user_data['session_id'],
@@ -151,6 +153,7 @@ def submit(update: Update, context: CallbackContext):
         user_data['phone_number'],
         user_data['level'],
         user_data['date'] + ' ' + user_data['time'],
+        teacher,
         user_data['comments']
     ),
         parse_mode='HTML')

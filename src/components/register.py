@@ -12,7 +12,7 @@ def register_user(update: Update, context: CallbackContext):
     user_id = update.effective_chat.id
     user_status = context.user_data['current_status']
 
-    if user_status == STATUS[1]:
+    if user_status == STATUS[0]:
         update.effective_message.reply_text(
             text('begin_registration'), parse_mode='HTML', reply_markup=ReplyKeyboardRemove())
         return request_name(update, context)
@@ -22,7 +22,7 @@ def register_user(update: Update, context: CallbackContext):
 
     reset_user(user_id)
 
-    context.user_data['current_status'] = STATUS[1]
+    context.user_data['current_status'] = STATUS[0]
 
     update.effective_message.reply_text(
         text('incomplete_registration'), parse_mode='HTML')
@@ -110,12 +110,28 @@ def get_level(update: Update, context: CallbackContext):
 
     set_user(user_id, {'level': message, 'status': STATUS[4]})
 
+    return request_teacher(update, context)
+
+
+def request_teacher(update: Update, context: CallbackContext):
+    update.effective_message.reply_text(
+        text('request_teacher'), reply_markup=ReplyKeyboardRemove(), parse_mode='HTML')
+
+    return "REQUEST_TEACHER"
+
+
+def get_teacher(update: Update, context: CallbackContext):
+    user_id = update.effective_chat.id
+    message = update.effective_message.text
+
+    set_user(user_id, {'teacher': message})
+
     return registration_complete(update, context)
 
 
 def registration_complete(update: Update, context: CallbackContext):
     user_id = update.effective_chat.id
-    set_user(user_id, {'status': STATUS[5]})
+    set_user(user_id, {'status': STATUS[1]})
 
     first_name = get_user(user_id, 'first_name')[0][0]
     last_name = get_user(user_id, 'last_name')[0][0]

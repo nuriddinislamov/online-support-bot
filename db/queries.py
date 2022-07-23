@@ -4,7 +4,7 @@ from src.constants import STATUS
 
 def create_table_if_not_exists(name):
     db_query(
-        f"CREATE TABLE IF NOT EXISTS {name} (id INTEGER PRIMARY KEY, first_name VARCHAR(50), last_name VARCHAR(50), phone_number VARCHAR(12), level VARCHAR(30), status VARCHAR(20))")
+        f"CREATE TABLE IF NOT EXISTS {name} (id INTEGER PRIMARY KEY, first_name VARCHAR(50), last_name VARCHAR(50), phone_number VARCHAR(12), level VARCHAR(30), teacher VARCHAR(50), status VARCHAR(20))")
 
 
 def add_new_user(id: int):
@@ -13,7 +13,7 @@ def add_new_user(id: int):
 
 
 def reset_user(id: int):
-    db_query(f"DELETE FROM users WHERE id = ({id})")
+    db_query(f"DELETE FROM users WHERE id = {id}")
     add_new_user(id)
 
 
@@ -22,11 +22,6 @@ def get_user(id: int, column: str = None):
 
 
 def set_user(id: int, data: dict):
-    # dict = {
-    #     'first_name': "Nuriddin",
-    #     'last_name': "Islamov",
-    #     "phone": "801-801-801-801"
-    # }
     pairs = []
     for i in data:
         pairs.append(f'{i} = "{data[i]}"')

@@ -8,9 +8,10 @@ ADMIN_IDS = [
 ]
 
 STATUS = {
-    1: "new_user",
+    0: "new_user",
+    1: "active_user",
     2: "name_confirmed",
     3: "phone_confirmed",
     4: "level_confirmed",
-    5: "active_user"
+    5: "teacher_confirmed"
 }

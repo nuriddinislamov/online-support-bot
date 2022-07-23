@@ -61,6 +61,10 @@ def main():
                 MessageHandler(Filters.regex(
                     multibuttons('levels')), register.get_level)
             ],
+            "REQUEST_TEACHER": [
+                MessageHandler(Filters.text & (
+                    ~Filters.command), register.get_teacher)
+            ],
             "MAIN_MENU": [
                 MessageHandler(Filters.regex(
                     button('book_session')), booking.get_date),
