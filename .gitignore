@@ -25,6 +25,8 @@ db.sqlite3-journal
 # pyenv
 .python-version
 
+.pytest_cache/
+
 # Data exports
 exports/
 
