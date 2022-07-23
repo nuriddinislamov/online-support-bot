@@ -144,7 +144,8 @@ def submit(update: Update, context: CallbackContext):
     update.effective_message.reply_text(text('submitted'))
     user_data = context.user_data
 
-    teacher = get_user(user_id, 'teacher')[0][0] if not None else "null"
+    teacher_raw = get_user(user_id, 'teacher')[0][0]
+    teacher = "null" if teacher_raw is None else teacher_raw
 
     msg = context.bot.send_message(GROUP_ID, text('group_message_template')
                                    .format(
