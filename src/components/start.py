@@ -37,10 +37,9 @@ def start(update: Update, context: CallbackContext):
         logging.info(
             'New user was added to the database, user_id: %s', user_id)
 
-    db_user_data = get_user(user_id)
-    user_status = db_user_data[0][-1]
+    user_status = get_user(user_id, 'status')[0][0]
 
-    if user_status == STATUS[5]:
+    if user_status == STATUS[1]:
         update.effective_message.reply_text(
             text('welcome_back'), parse_mode='HTML')
         logging.info("Active user restarted the bot, user_id: %s", user_id)
