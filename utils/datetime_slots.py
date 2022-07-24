@@ -5,7 +5,7 @@ import datetime
 def generate_date_slots():
     today = datetime.datetime.today()
     dates = []
-    for i in range(1, 9):
+    for i in range(1, 4):
         date = today + datetime.timedelta(days=i)
         if date.isoweekday() == 7:
             continue
