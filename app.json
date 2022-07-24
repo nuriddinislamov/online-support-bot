@@ -29,7 +29,7 @@
 			"my_info": "📝 Mening shaxsiy ma'lumotlarim:\n\nIsmim: <b>{}</b>\nTelefon raqam: <b>{}</b>\nIngiliz tili darajasi: <b>{}</b>",
 			"try_later_messages": "Yangiroq xabarlarga javob berishga xarakat qiling",
 			"message_sent": "Sizning javobingiz so'rovchiga yetkazildi!",
-			"get_date": "Sizga qulay bo'lgan kunni tanlang (keyingi 1 xafta uchun)",
+			"get_date": "Sizga qulay bo'lgan kunni tanlang (keyingi 3 ish kuni uchun)",
 			"get_time": "Sizga qulay bo'lgan vaqtni tanlang",
 			"got_it": "Qabul qildim!",
 			"enter_comments": "O'z murojaatingizni kiriting (Qaysi mavzu tushuntirilishini xohlaysiz) ✍️",
