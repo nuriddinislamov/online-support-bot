@@ -40,7 +40,7 @@ def send_all(update: Update, context: CallbackContext):
             continue
         try:
             post.copy(user[0])
-            time.sleep(0.05)
+            time.sleep(0.5)
             sent += 1
             progress.edit_text(
                 f"📢 Broadcast started. Progress <b>{sent}/{len(users)}</b>", parse_mode='HTML')
