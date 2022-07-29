@@ -1,6 +1,6 @@
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import CallbackContext
-from telegram.error import Unauthorized
+from telegram.error import Unauthorized, BadRequest
 from src.constants import ADMIN_IDS
 from src.components import main_menu
 from db.queries import get_all_users
@@ -36,15 +36,13 @@ def send_all(update: Update, context: CallbackContext):
 
     sent = 0
     for user in users:
-        if user[0] == update.effective_chat.id:
-            continue
         try:
             post.copy(user[0])
             time.sleep(0.05)
             sent += 1
             progress.edit_text(
                 f"📢 Broadcast started. Progress <b>{sent}/{len(users)}</b>", parse_mode='HTML')
-        except Unauthorized:
+        except (Unauthorized, BadRequest):
             continue
 
     update.effective_message.reply_text(
