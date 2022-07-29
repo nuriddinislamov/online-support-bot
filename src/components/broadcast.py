@@ -42,7 +42,9 @@ def send_all(update: Update, context: CallbackContext):
             sent += 1
             progress.edit_text(
                 f"📢 Broadcast started. Progress <b>{sent}/{len(users)}</b>", parse_mode='HTML')
-        except (Unauthorized, BadRequest):
+        except Unauthorized:
+            continue
+        except BadRequest:
             continue
 
     update.effective_message.reply_text(
