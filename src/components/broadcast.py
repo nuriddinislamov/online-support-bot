@@ -36,8 +36,6 @@ def send_all(update: Update, context: CallbackContext):
 
     sent = 0
     for user in users:
-        if user[0] in ADMIN_IDS:
-            continue
         try:
             post.copy(user[0])
             time.sleep(0.5)
@@ -45,6 +43,8 @@ def send_all(update: Update, context: CallbackContext):
             progress.edit_text(
                 f"📢 Broadcast started. Progress <b>{sent}/{len(users)}</b>", parse_mode='HTML')
         except Unauthorized:
+            continue
+        except BadRequest:
             continue
 
     update.effective_message.reply_text(
