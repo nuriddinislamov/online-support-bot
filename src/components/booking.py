@@ -1,5 +1,6 @@
 from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext
+from telegram.error import Unauthorized
 from src.components import main_menu
 from src.constants import GROUP_ID
 from utils.text import button, text
@@ -214,5 +215,8 @@ def handle_booking_approval(update: Update, context: CallbackContext):
     # Get the User ID from the text
     uid = message.text[uid_txt_idx + 5:].split('\n')[0]
 
-    context.bot.send_message(uid, text('status_update').format(status),
-                             parse_mode='HTML')
+    try:
+        context.bot.send_message(uid, text('status_update').format(status),
+                                 parse_mode='HTML')
+    except Unauthorized:
+        update.effective_message.reply_text(text('forbidden_reply'))
