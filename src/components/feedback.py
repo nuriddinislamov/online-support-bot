@@ -40,6 +40,7 @@ def submit_feedback(update: Update, context: CallbackContext):
 
     first_name = get_user(user_id, 'first_name')[0][0]
     last_name = get_user(user_id, 'last_name')[0][0]
+    level = get_user(user_id, 'level')[0][0]
     stars = context.user_data['feedback_stars'] * "⭐️"
     comments = update.effective_message.text
 
@@ -49,6 +50,7 @@ def submit_feedback(update: Update, context: CallbackContext):
                                  update.update_id,
                                  user_id,
                                  first_name + ' ' + last_name,
+                                 level,
                                  stars,
                                  comments
                              ), parse_mode='HTML')
