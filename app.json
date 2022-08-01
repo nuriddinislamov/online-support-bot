@@ -46,7 +46,9 @@
 			"stars_submitted": "Rahmat! Siz {} berdingiz.",
 			"feedback_submitted": "✅ Javoblaringiz ma'muriyatga yetkazildi. Vaqtingiz uchun rahmat!",
 			"feedback_to_group": "🍎 New feedback!\n<b>ID #{}</b>\n\nUID: <b>{}</b>\nName: <b>{}</b>\nLevel: <b>{}</b>\nStars: <b>{}</b>\nComments: <b>{}</b>\n\n<i>You can reply to this message. Sender will be notified.</i>",
-			"forbidden_reply": "Foydalanuvchi botni bloklab qo'ygan. Xabaringiz yetib bormadi 🙁"
+			"forbidden_reply": "Foydalanuvchi botni bloklab qo'ygan. Xabaringiz yetib bormadi 🙁",
+			"approved": "✅ Approved",
+			"denied": "⛔️ Denied"
 		},
 		"buttons": {
 			"book_session": "✏️ O'qituvchiga ariza qoldirish",

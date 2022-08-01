@@ -202,10 +202,10 @@ def handle_booking_approval(update: Update, context: CallbackContext):
     message = query.message
 
     if query.data == 'approve':
-        status = '✅ Approved'
+        status = text('approved')
 
     if query.data == 'deny':
-        status = '⛔️ Denied'
+        status = text('denied')
 
     message.edit_text(f"<b>{status}</b>\n" + message.text,
                       parse_mode='HTML',
