@@ -1,4 +1,4 @@
-from telegram import Update, ReplyKeyboardMarkup
+from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram.ext import CallbackContext
 from db.queries import get_user
 from src.constants import FEEDBACK_GROUP_ID
@@ -19,6 +19,23 @@ def handle_feedback(update: Update, context: CallbackContext):
                                         .format(int(data) * "⭐️"),
                                         parse_mode='HTML')
     query.delete_message()
+    return request_support_teacher(update, context)
+
+
+def request_support_teacher(update: Update, context: CallbackContext):
+    user_id = update.effective_chat.id
+    context.bot.send_message(user_id, text(
+        'request_support_teacher_name'), parse_mode='HTML', reply_markup=ReplyKeyboardRemove())
+    return "SUPPORT_TEACHER_NAME"
+
+
+def get_support_teacher(update: Update, context: CallbackContext):
+    teacher_name = update.effective_message.text
+    payload = {
+        "support_teacher": teacher_name
+    }
+    context.user_data.update(payload)
+    update.effective_message.reply_text(text('got_it'), parse_mode='HTML')
     return request_comments(update, context)
 
 
@@ -41,6 +58,7 @@ def submit_feedback(update: Update, context: CallbackContext):
     first_name = get_user(user_id, 'first_name')[0][0]
     last_name = get_user(user_id, 'last_name')[0][0]
     level = get_user(user_id, 'level')[0][0]
+    support_teacher = context.user_data['support_teacher']
     stars = context.user_data['feedback_stars'] * "⭐️"
     comments = update.effective_message.text
 
@@ -51,6 +69,7 @@ def submit_feedback(update: Update, context: CallbackContext):
                                  user_id,
                                  first_name + ' ' + last_name,
                                  level,
+                                 support_teacher,
                                  stars,
                                  comments
                              ), parse_mode='HTML')

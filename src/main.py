@@ -124,10 +124,13 @@ def main():
                 MessageHandler(Filters.text & (
                     ~Filters.command), feedback.submit_feedback)
             ],
+            "SUPPORT_TEACHER_NAME": [
+                MessageHandler(Filters.text, feedback.get_support_teacher)
+            ]
         },
         fallbacks=[
             CallbackQueryHandler(feedback.handle_feedback,
-                                 pattern='^1|2|3|4|5$'),
+                                 pattern='^1$|^2$|^3$|^4$|^5$'),
             CommandHandler('start', start.start),
             CommandHandler('help', commands.help),
             CommandHandler('contact', commands.contact),
