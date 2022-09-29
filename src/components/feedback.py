@@ -1,5 +1,6 @@
 from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram.ext import CallbackContext
+from telegram.error import BadRequest
 from db.queries import get_user
 from src.constants import FEEDBACK_GROUP_ID
 from src.components import main_menu
@@ -18,7 +19,10 @@ def handle_feedback(update: Update, context: CallbackContext):
     update.effective_message.reply_text(text('stars_submitted')
                                         .format(int(data) * "⭐️"),
                                         parse_mode='HTML')
-    query.delete_message()
+    try:
+        query.delete_message()
+    except BadRequest:
+        pass
     return request_support_teacher(update, context)
 
 
