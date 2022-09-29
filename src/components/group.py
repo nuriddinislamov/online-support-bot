@@ -21,3 +21,5 @@ def reply_to_user(update: Update, context: CallbackContext):
         update.effective_message.reply_text(text('try_later_messages'))
     except Unauthorized:
         update.effective_message.reply_text(text('forbidden_reply'))
+    except AttributeError:
+        return
