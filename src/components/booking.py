@@ -182,9 +182,13 @@ def submit(update: Update, context: CallbackContext):
     timezone = pytz.timezone('Asia/Tashkent')
 
     final_time = timezone.localize(without_timezone)
-    run_job(
-        update, context,
-        run_time=final_time)
+
+    try:
+        run_job(
+            update, context,
+            run_time=final_time)
+    except Unauthorized:
+        pass
 
     update.effective_message.reply_text(text('submitted'))
 

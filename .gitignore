@@ -2,6 +2,9 @@
 venv/
 .env
 
+# No idea
+.idea/
+
 # Mac's trash
 .DS_Store
 
